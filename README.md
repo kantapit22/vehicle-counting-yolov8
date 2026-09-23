@@ -90,68 +90,63 @@ flowchart TD
 
 แนะนำให้ใช้ Python 3.10 หรือ 3.11:
 
-```bash
-# Clone หรือเข้าไปที่โฟลเดอร์โปรเจกต์
+```cmd
+:: Clone หรือเข้าไปที่โฟลเดอร์โปรเจกต์
 cd vehicle-counting-yolov8
 
-# สร้าง Virtual Environment
+:: สร้าง Virtual Environment
 python -m venv .venv
 
-# เปิดใช้งาน Virtual Environment (Windows PowerShell)
+:: เปิดใช้งาน Virtual Environment (Windows CMD)
 .venv\Scripts\activate
-
-# เปิดใช้งาน Virtual Environment (Linux / macOS)
-source .venv/bin/activate
 ```
 
 ### 2. ติดตั้ง Dependencies
 
-```bash
+```cmd
 pip install -r requirements.txt
 ```
-
-*(หรือติดตั้งด้วย `uv`: `uv pip install -r requirements.txt`)*
 
 ### 3. ดาวน์โหลดโมเดลและเตรียมวิดีโอทดสอบ
 
 ระบบจะดาวน์โหลดโมเดล `models/yolov8n.pt` ให้อัตโนมัติเมื่อรันครั้งแรก หรือรันคำสั่ง:
 
-```bash
-# ดาวน์โหลด Weight YOLOv8n
-python models/download_model.py
+```cmd
+:: ดาวน์โหลด Weight YOLOv8n
+.venv\Scripts\python.exe models/download_model.py
 
-# ดาวน์โหลดวิดีโอรถจริงจากทางหลวง (Real Traffic Videos)
-python data/download_highway_video.py
+:: ดาวน์โหลดวิดีโอรถจริงจากทางหลวง (Real Traffic Videos)
+.venv\Scripts\python.exe data/download_highway_video.py
 ```
 
 ---
 
 ## 🎬 วิธีรันโปรเจกต์ (Usage Examples)
 
-> **หมายเหตุ**: ตัวอย่างด้านล่างใช้วิดีโอรถจริงจากทางหลวง ดาวน์โหลดวิดีโอก่อนด้วย `python data/download_highway_video.py`
+> **หมายเหตุ**: ตัวอย่างด้านล่างใช้วิดีโอรถจริงจากทางหลวง ดาวน์โหลดวิดีโอก่อนด้วย `.venv\Scripts\python.exe data/download_highway_video.py`
 
 ### 1. รันกับวิดีโอทางหลวงไทย (Thai Highway - Full HD 1080p, เปิด Shadow Removal)
 
-```bash
-python src/main.py --source data/thai_highway.mp4 --scenario sunny --show --save-output output_thai.mp4 --save-csv thai_log.csv
+```cmd
+.venv\Scripts\python.exe src/main.py --source data/thai_highway.mp4 --scenario sunny --show --save-output output_thai.mp4 --save-csv thai_log.csv
 ```
 
 ### 2. รันกับวิดีโอทางหลวง (Highway Traffic Test)
 
-```bash
-python src/main.py --source data/highway_traffic_test.mp4 --scenario sunny --show --save-output output_highway.mp4 --save-csv highway_log.csv
+```cmd
+.venv\Scripts\python.exe src/main.py --source data/highway_traffic_test.mp4 --scenario sunny --show --save-output output_highway.mp4 --save-csv highway_log.csv
 ```
 
 ### 3. รันกับวิดีโอจราจรหนาแน่นขณะฝนตก (Busy Rainy Traffic - เปิด Occlusion Handling)
 
-```bash
-python src/main.py --source data/busyrainytraffic.mp4 --scenario heavy_traffic --show --save-output output_rainy.mp4 --save-csv rainy_log.csv
+```cmd
+.venv\Scripts\python.exe src/main.py --source data/busyrainytraffic.mp4 --scenario heavy_traffic --show --save-output output_rainy.mp4 --save-csv rainy_log.csv
 ```
 
 ### 4. รันกับกล้องเว็บแคม (Live Webcam)
 
-```bash
-python src/main.py --source 0 --show
+```cmd
+.venv\Scripts\python.exe src/main.py --source 0 --show
 ```
 
 ---
@@ -178,8 +173,8 @@ python src/main.py --source 0 --show
 
 สามารถตรวจสอบการทำงานของทุกโมดูลด้วยชุดทดสอบอัตโนมัติ:
 
-```bash
-python test_pipeline.py
+```cmd
+.venv\Scripts\python.exe test_pipeline.py
 ```
 
 ชุดทดสอบครอบคลุม:

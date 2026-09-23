@@ -12,10 +12,11 @@
 
 ```text
 vehicle-counting-yolov8/
-├── data/                               # วิดีโอจราจรสำหรับทดสอบ (Cloudy, Sunny, Heavy Traffic)
-│   ├── sunny_traffic.mp4               # วิดีโอทดสอบสภาพแสงแดดจัด (ทดสอบการตัดเงา)
-│   ├── cloudy_traffic.mp4              # วิดีโอทดสอบสภาพแสงเมฆครึ้ม (ทดสอบการตรวจจับทั่วไป)
-│   ├── heavy_traffic.mp4               # วิดีโอทดสอบรถติดหนาแน่น (ทดสอบการแยกวัตถุซ้อนทับ)
+├── data/                               # วิดีโอจราจรสำหรับทดสอบ
+│   ├── thai_highway.mp4               # วิดีโอทางหลวงประเทศไทย (1080p, รถจริง)
+│   ├── highway_traffic_test.mp4       # วิดีโอทางหลวง (640x352, รถจริง)
+│   ├── busyrainytraffic.mp4           # วิดีโอจราจรหนาแน่นขณะฝนตก (รถจริง)
+│   ├── download_highway_video.py      # สคริปต์ดาวน์โหลดวิดีโอรถจริงจาก GitHub
 │   └── generate_sample_videos.py       # สคริปต์สร้างวิดีโอจำลองสภาพจราจรเสมือนจริง
 ├── models/                             # ไฟล์ Weight ของ YOLOv8
 │   ├── yolov8n.pt                      # YOLOv8 nano weight (ดาวน์โหลดอัตโนมัติ)
@@ -119,30 +120,32 @@ pip install -r requirements.txt
 # ดาวน์โหลด Weight YOLOv8n
 python models/download_model.py
 
-# สร้างวิดีโอจำลองสภาพจราจร 3 รูปแบบ (Sunny, Cloudy, Heavy Traffic)
-python data/generate_sample_videos.py
+# ดาวน์โหลดวิดีโอรถจริงจากทางหลวง (Real Traffic Videos)
+python data/download_highway_video.py
 ```
 
 ---
 
 ## 🎬 วิธีรันโปรเจกต์ (Usage Examples)
 
-### 1. รันโหมดสภาพแสงแดดจัด (Sunny Scenario - เปิด Shadow Removal)
+> **หมายเหตุ**: ตัวอย่างด้านล่างใช้วิดีโอรถจริงจากทางหลวง ดาวน์โหลดวิดีโอก่อนด้วย `python data/download_highway_video.py`
+
+### 1. รันกับวิดีโอทางหลวงไทย (Thai Highway - Full HD 1080p, เปิด Shadow Removal)
 
 ```bash
-python src/main.py --source data/sunny_traffic.mp4 --scenario sunny --show --save-output output_sunny.mp4 --save-csv sunny_log.csv
+python src/main.py --source data/thai_highway.mp4 --scenario sunny --show --save-output output_thai.mp4 --save-csv thai_log.csv
 ```
 
-### 2. รันโหมดสภาพแสงเมฆครึ้ม (Cloudy Scenario)
+### 2. รันกับวิดีโอทางหลวง (Highway Traffic Test)
 
 ```bash
-python src/main.py --source data/cloudy_traffic.mp4 --scenario cloudy --show --save-output output_cloudy.mp4 --save-csv cloudy_log.csv
+python src/main.py --source data/highway_traffic_test.mp4 --scenario sunny --show --save-output output_highway.mp4 --save-csv highway_log.csv
 ```
 
-### 3. รันโหมดสภาพการจราจรหนาแน่น (Heavy Traffic - เปิด Occlusion Handling)
+### 3. รันกับวิดีโอจราจรหนาแน่นขณะฝนตก (Busy Rainy Traffic - เปิด Occlusion Handling)
 
 ```bash
-python src/main.py --source data/heavy_traffic.mp4 --scenario heavy_traffic --show --save-output output_heavy.mp4 --save-csv heavy_log.csv
+python src/main.py --source data/busyrainytraffic.mp4 --scenario heavy_traffic --show --save-output output_rainy.mp4 --save-csv rainy_log.csv
 ```
 
 ### 4. รันกับกล้องเว็บแคม (Live Webcam)

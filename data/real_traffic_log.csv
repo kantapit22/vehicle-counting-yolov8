@@ -1,0 +1,3 @@
+track_id,class_name,direction,timestamp,total_count
+2,car,Inbound,2026-09-23 19:17:35,1
+0,car,Inbound,2026-09-23 19:17:35,2

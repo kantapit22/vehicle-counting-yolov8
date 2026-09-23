@@ -1,0 +1,34 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Model files (large)
+models/*.pt
+models/*.onnx
+
+# Output files
+*.mp4
+*.avi
+
+# Data files
+data/*.mp4
+data/*.avi
+data/*.mov
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

@@ -15,7 +15,6 @@ vehicle-counting-yolov8/
 ├── data/                               # วิดีโอจราจรสำหรับทดสอบ
 │   ├── thai_highway.mp4               # วิดีโอทางหลวงประเทศไทย (1080p, รถจริง)
 │   ├── highway_traffic_test.mp4       # วิดีโอทางหลวง (640x352, รถจริง)
-│   ├── busyrainytraffic.mp4           # วิดีโอจราจรหนาแน่นขณะฝนตก (รถจริง)
 │   ├── download_highway_video.py      # สคริปต์ดาวน์โหลดวิดีโอรถจริงจาก GitHub
 │   └── generate_sample_videos.py       # สคริปต์สร้างวิดีโอจำลองสภาพจราจรเสมือนจริง
 ├── models/                             # ไฟล์ Weight ของ YOLOv8
@@ -137,13 +136,7 @@ pip install -r requirements.txt
 .venv\Scripts\python.exe src/main.py --source data/highway_traffic_test.mp4 --scenario sunny --show --save-output output_highway.mp4 --save-csv highway_log.csv
 ```
 
-### 3. รันกับวิดีโอจราจรหนาแน่นขณะฝนตก (Busy Rainy Traffic - เปิด Occlusion Handling)
-
-```cmd
-.venv\Scripts\python.exe src/main.py --source data/busyrainytraffic.mp4 --scenario heavy_traffic --show --save-output output_rainy.mp4 --save-csv rainy_log.csv
-```
-
-### 4. รันกับกล้องเว็บแคม (Live Webcam)
+### 3. รันกับกล้องเว็บแคม (Live Webcam)
 
 ```cmd
 .venv\Scripts\python.exe src/main.py --source 0 --show
